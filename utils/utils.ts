@@ -1,5 +1,5 @@
  // Create a function that splits each search criteria at capital letters and capitalizes the first word.
-export const splitAndCapitalize = (input) => {
+export const splitAndCapitalize = (input: string) => {
   const newArr: string[] = []
   input.split(/(?=[A-Z])/).map((word: string, i: number) => {
     if (i === 0) {

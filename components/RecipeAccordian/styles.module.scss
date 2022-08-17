@@ -1,0 +1,44 @@
+.recipe {
+    position: relative;
+    width: 500px;
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.25s linear
+}
+
+.expand {
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    // height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.25s
+}
+
+
+.title {
+    position: absolute;
+    left: 170px;
+    top: 37.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.image {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    right: 0;
+    top: 0;
+    border-radius: 5px;
+    // height: 100%;
+    transition: 0.25s
+}

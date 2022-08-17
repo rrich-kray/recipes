@@ -9,6 +9,7 @@ import RecipeGrid from "../components/RecipeGrid/RecipeGrid";
 import Nav from '../components/Nav/Nav'
 import styles from '../styles/Home.module.css'
 import { splitAndCapitalize } from '../utils/utils';
+import RecipeAccordian from '../components/RecipeAccordian/RecipeAccordian';
 
 
 const Home: NextPage = () => {
@@ -114,6 +115,7 @@ const Home: NextPage = () => {
 })
 
   console.log(recipeData)
+  console.log(formState)
 
   const createUrl = (baseUrl, params) => {
     baseUrl = `${baseUrl}?`
@@ -148,34 +150,6 @@ const Home: NextPage = () => {
     handleSearch()
   }, [])
 
-  const renderSearchCriteria = () => {
-    for (const parameter in formState) {
-      if (typeof formState[parameter] === "string") {
-        complexSearch.current.innerHTML += `
-          <div class="input-container" key=${parameter} style="margin: 10px">
-            <label for=${parameter} style="font-weight: bold; margin-bottom: 10px">${splitAndCapitalize(parameter)}</label>
-            <input name=${parameter} id=${parameter} style="width: 300px; height: 30px; border-radius: 5px; border: none; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" />
-          </div>
-          ` 
-      } else {
-        complexSearch.current.innerHTML += `
-          <div class="input-container" key={${parameter}} style="margin: 10px">
-            <label for=${parameter} style="font-weight: bold; margin-bottom: 10px">${splitAndCapitalize(parameter)}</label>
-            <select id=${parameter}} style="width: 300px; height: 30px; border-radius: 5px; border: none; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
-          </div>
-        `
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (isComplexSearchVisible) {
-      renderSearchCriteria()
-    }
-  })
 
   return (
     <>    
@@ -190,10 +164,23 @@ const Home: NextPage = () => {
           <div className="advanced-search" style={{width: "100%", height: isComplexSearchVisible ? "100px" : "0px"}}>
             {isComplexSearchVisible && (
               <div className="complex-search" ref={complexSearch}>
+                {Object.keys(formState).map(key => (
+                    <div className="input-container" key={key} style={{margin: "10px"}}>
+                        <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
+                        {typeof formState[key] === "string" 
+                        ? (<input name={key} id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} />)
+                        : (
+                          <select id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} >
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                          </select>
+                        )}
+                    </div>
+                ))}
               </div>
               )}
           </div>
-          <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>  
+          <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
             <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
             <button className="search-btn" onClick={handleSearch}>Search</button>
             <button className="advanced-search-btn" onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}>Advanced Search</button>
@@ -204,7 +191,7 @@ const Home: NextPage = () => {
           {recipeData.results && (
             <div className="search">
               {recipeData.results.map(recipe => (
-                <Recipe recipe={recipe} />
+                <RecipeAccordian recipe={recipe} />
               ))}
             </div>
           )}
