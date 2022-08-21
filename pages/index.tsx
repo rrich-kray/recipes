@@ -117,6 +117,8 @@ const Home: NextPage = () => {
   console.log(recipeData)
   console.log(formState)
 
+  // Only query parameter has an effect
+  // Need to make a request to the API and determine the url structure compliant with python FastAPI
   const createUrl = (baseUrl, params) => {
     baseUrl = `${baseUrl}?`
     for (const parameter in params) {
