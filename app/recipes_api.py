@@ -4,9 +4,6 @@ from recipes import search_recipes, validate_length, validate_input
 from mangum import Mangum
 from pydantic import BaseModel
 
-# Problem I am trying to solve: Find a way to configure FastAPI to accept data via body and not just url.
-# FastAPI is configured to accept JSON data.
-# Axios, by default, will send data in JSON format.
 
 app = FastAPI()
 
