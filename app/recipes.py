@@ -1,16 +1,14 @@
+
 import os
 import argparse
 import re
 from typing import List, Any, Dict
 import requests
 
-# can have a Simple Search and Advanced Search on the frontend
-
 url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
 api_key = os.getenv("RECIPE_API_KEY")
-print(api_key)
 headers = {
-    "X-RapidAPI-Key": '',
+    "X-RapidAPI-Key": 'b418581ce1msh2480d13b7072a51p149da9jsne92202f6ba0d',
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
 }
 
@@ -18,11 +16,14 @@ headers = {
 def main():
     print("hello world!")
 
+# Response from spoonacular - resource not found
+
 
 def search_recipes(params):
+    print(params)
     response = requests.request(
         "GET", url, headers=headers, params=params)
-    return response.text
+    return response
 
 
 def validate_length(input):
