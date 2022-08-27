@@ -126,10 +126,6 @@ async def default_search():
     response = search_recipes()
     return response
 
-# With pydantic, error is "unhashable type: dict"
-# With Request, error is "cannot mix str and non-str arguments"
-# Based on the
-
 
 @app.post("/search")
 async def search_api(req: Recipe):
