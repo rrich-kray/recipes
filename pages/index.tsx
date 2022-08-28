@@ -10,6 +10,7 @@ import Nav from '../components/Nav/Nav'
 import styles from '../styles/Home.module.css'
 import { splitAndCapitalize } from '../utils/utils';
 import RecipeAccordian from '../components/RecipeAccordian/RecipeAccordian';
+import RecipePage from '../components/RecipePage/RecipePage';
 import _ from "lodash"
 
 
@@ -18,7 +19,10 @@ const Home: NextPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [recipeData, setRecipeData] = useState([]);
   const [isComplexSearchVisible, setComplexSearchVisibility] = useState(false);
+  const [activeRecipe, setActiveRecipe] = useState([]);
   const complexSearch = useRef();
+
+  console.log(activeRecipe)
 
   // issue with numbers
   const [formState, setFormState] = useState({
@@ -153,7 +157,7 @@ const Home: NextPage = () => {
 
   // Search getting through to FastAPI, but resource cannot be found - error with search_recipes. Probably how request is structured
   useEffect(() => {
-    handleSearchWithParams()
+    handleSearch()
   }, [])
 
 
@@ -166,6 +170,10 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+          {activeRecipe.length !== 0 ? (
+          <RecipePage activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe} />
+          ) : (
+          <>
           <Nav />
           <div className="advanced-search" style={{width: "100%", height: isComplexSearchVisible ? "100px" : "0px"}}>
             {isComplexSearchVisible && (
@@ -173,7 +181,7 @@ const Home: NextPage = () => {
                 {Object.keys(formState).map(key => (
                     <div className="input-container" key={key} style={{margin: "10px"}}>
                         <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
-                        {typeof formState[key] === "string" 
+                        {!formState[key].match(/(true|false)/g)
                         ? (<input name={key} id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} />)
                         : (
                           <select id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} >
@@ -197,13 +205,18 @@ const Home: NextPage = () => {
           {recipeData.results && (
             <div className="search">
               {recipeData.results.map(recipe => (
-                <RecipeAccordian recipe={recipe} />
+                <RecipeAccordian
+                  recipe={recipe}
+                  setActiveRecipe={setActiveRecipe}
+                />
               ))}
             </div>
           )}
+        </>
+          )}
         </main>
-        {isLoading && <Loading />}
       </div>
+      {isLoading && <Loading />}
       <style jsx>{`
         main {
           position: relative;

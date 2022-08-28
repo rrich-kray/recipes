@@ -8,8 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    transition: 0.25s ease-in
+    padding: 20px;;
+    cursor: pointer;
+    transition: 0.1s ease-in
+}
+
+.recipe:hover {
+    transform: scale(1.025)
 }
 
 .expand {

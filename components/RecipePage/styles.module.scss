@@ -1,0 +1,65 @@
+.recipePage {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    z-index: 999;
+}
+
+.leftPanel {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(
+        0deg,
+        rgb(32, 33, 43) 20%,
+        rgb(32, 33, 43, 0.9) 50%,
+        rgb(32, 33, 43, 0.8) 80%,
+        rgb(32, 33, 43, 0.75) 90%,
+        rgb(32, 33, 43, 0.7) 100%
+      );
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    position: relative
+}
+
+.backArrow {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 10%;
+    left: 5%;
+    cursor: pointer
+}
+
+.rightPanel {
+    flex: 1;
+    height: 100%
+}
+
+.title {
+    text-align: center;
+    font-size: 3.5rem;
+    font-style: italic;
+    color: white;
+}
+
+.steps {
+
+}
+
+@media screen and (max-width: 980px) {
+    .recipePage {
+        display: flex;
+        flex-direction: column
+    }
+}
+
+
