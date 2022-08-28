@@ -5,7 +5,10 @@
     display: flex;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: 0.25s linear
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s ease-in
 }
 
 .expand {
@@ -22,9 +25,9 @@
 
 
 .title {
-    position: absolute;
-    left: 170px;
-    top: 37.5px;
+    // position: absolute;
+    // left: 170px;
+    // top: 37.5px;
     display: flex;
     justify-content: center;
     align-items: center;

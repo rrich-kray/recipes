@@ -10,6 +10,7 @@ import Nav from '../components/Nav/Nav'
 import styles from '../styles/Home.module.css'
 import { splitAndCapitalize } from '../utils/utils';
 import RecipeAccordian from '../components/RecipeAccordian/RecipeAccordian';
+import _ from "lodash"
 
 
 const Home: NextPage = () => {
@@ -18,32 +19,34 @@ const Home: NextPage = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [isComplexSearchVisible, setComplexSearchVisibility] = useState(false);
   const complexSearch = useRef();
+
+  // issue with numbers
   const [formState, setFormState] = useState({
-    query: 'sausage',
+    query: 'pork',
     cuisine: '',
-    excludeCuisine: false,
+    excludeCuisine: '',
     diet: '',
     intolerances: '',
     equipment: '',
     includeIngredients: '',
     excludeIngredients: '',
     type: '',
-    instructionsRequired: true,
-    fillIngredients: true,
-    addRecipeInformation: true,
+    instructionsRequired: 'true',
+    fillIngredients: 'false',
+    addRecipeInformation: 'false',
     titleMatch: '',
-    maxReadyTime: '',
-    ignorePantry: true,
-    sort: '',
-    sortDirection: '',
-    minCarbs: '5',
-    maxCarbs: '20',
-    minProtein: '5',
-    maxProtein: '30',
-    minCalories: '100',
-    maxCalories: '500',
-    minFat: '5',
-    maxFat: '20',
+    maxReadyTime: '20',
+    ignorePantry: 'true',
+    sort: 'calories',
+    sortDirection: 'asc',
+    minCarbs: '',
+    maxCarbs: '',
+    minProtein: '',
+    maxProtein: '',
+    minCalories: '',
+    maxCalories: '',
+    minFat: '',
+    maxFat: '',
     minAlcohol: '',
     maxAlcohol: '',
     minCaffeine: '',
@@ -109,8 +112,8 @@ const Home: NextPage = () => {
     minZinc: '',
     maxZinc: '',
     offset: '',
-    number: '',
-    limitLicense: false,
+    number: '100',
+    limitLicense: '',
     ranking: ''
 })
 
@@ -123,8 +126,8 @@ const Home: NextPage = () => {
     baseUrl = `${baseUrl}?`
     for (const parameter in params) {
       if (params[parameter] !== '') {
-        Object.keys(params).indexOf(parameter) === 0 
-        ? baseUrl = `${baseUrl}params=${parameter}=${params[parameter]}`
+        Object.keys(params).indexOf(parameter) === 0
+        ? baseUrl = `${baseUrl}req=${parameter}=${params[parameter]}`
         : baseUrl = `${baseUrl}&${parameter}=${params[parameter]}`
       }
     }
@@ -146,10 +149,27 @@ const Home: NextPage = () => {
     setRecipeData(JSON.parse(response.data));
   }
 
-  console.log(recipeData)
+  const handleSearchWithParams = async () => {
+    // const filteredFormstate = _.flow([
+    //   Object.entries,
+    //   arr => arr.filter(([key, value]) => value !== ''),
+    //   Object.fromEntries
+    // ])(formState)
 
+    // console.log(filteredFormstate)
+    // console.log(JSON.stringify(filteredFormstate))
+
+    const response = await axios.post(`https://uqj4m59r35.execute-api.us-east-1.amazonaws.com/prod/search`, formState);
+    console.log(response)
+    setRecipeData(JSON.parse(response.data))
+  }
+
+  console.log(recipeData)
+  // console.log(JSON.stringify(formState))
+
+  // Search getting through to FastAPI, but resource cannot be found - error with search_recipes. Probably how request is structured
   useEffect(() => {
-    handleSearch()
+    handleSearchWithParams()
   }, [])
 
 
@@ -184,7 +204,7 @@ const Home: NextPage = () => {
           </div>
           <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
             <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
-            <button className="search-btn" onClick={handleSearch}>Search</button>
+            <button className="search-btn" onClick={handleSearchWithParams}>Search</button>
             <button className="advanced-search-btn" onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}>Advanced Search</button>
           </div>
           <div className="header-container">
