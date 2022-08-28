@@ -33,7 +33,7 @@ const Home: NextPage = () => {
     type: '',
     instructionsRequired: 'true',
     fillIngredients: 'false',
-    addRecipeInformation: 'false',
+    addRecipeInformation: 'true',
     titleMatch: '',
     maxReadyTime: '20',
     ignorePantry: 'true',
@@ -143,22 +143,6 @@ const Home: NextPage = () => {
   }
 
   const handleSearch = async () => {
-    // parameters will represent the params argument. So as long as url is constructed correctly, the function should return results
-    const url = createUrl(`https://uqj4m59r35.execute-api.us-east-1.amazonaws.com/prod/search`, formState);
-    const response = await axios.get(url);
-    setRecipeData(JSON.parse(response.data));
-  }
-
-  const handleSearchWithParams = async () => {
-    // const filteredFormstate = _.flow([
-    //   Object.entries,
-    //   arr => arr.filter(([key, value]) => value !== ''),
-    //   Object.fromEntries
-    // ])(formState)
-
-    // console.log(filteredFormstate)
-    // console.log(JSON.stringify(filteredFormstate))
-
     const response = await axios.post(`https://uqj4m59r35.execute-api.us-east-1.amazonaws.com/prod/search`, formState);
     console.log(response)
     setRecipeData(JSON.parse(response.data))
@@ -204,7 +188,7 @@ const Home: NextPage = () => {
           </div>
           <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
             <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
-            <button className="search-btn" onClick={handleSearchWithParams}>Search</button>
+            <button className="search-btn" onClick={handleSearch}>Search</button>
             <button className="advanced-search-btn" onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}>Advanced Search</button>
           </div>
           <div className="header-container">
@@ -286,7 +270,8 @@ const Home: NextPage = () => {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
           padding-left: 25px;
-          gap: 25px
+          gap: 25px;
+          justify-items: center 
         }
 
         .complex-search {

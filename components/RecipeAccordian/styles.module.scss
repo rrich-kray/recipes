@@ -8,16 +8,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     transition: 0.25s ease-in
 }
 
 .expand {
-    position: absolute;
-    left: 15px;
-    top: 40px;
+    flex: 0.5;
+    // position: absolute;
+    // left: 15px;
+    // top: 40px;
     // height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     cursor: pointer;
     transition: 0.25s
@@ -25,6 +27,7 @@
 
 
 .title {
+    flex: 2;
     // position: absolute;
     // left: 170px;
     // top: 37.5px;
@@ -32,11 +35,14 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    text-align:center;
+    padding: 10px;
     font-size: 1.25rem;
 }
 
 .image {
-    position: absolute;
+    flex: 1;
+    // position: absolute;
     height: 100px;
     width: 100px;
     right: 0;
