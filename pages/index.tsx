@@ -182,9 +182,28 @@ const Home: NextPage = () => {
                     <div className="input-container" key={key} style={{margin: "10px"}}>
                         <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
                         {!formState[key].match(/(true|false)/g)
-                        ? (<input name={key} id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} />)
+                        ? (<input 
+                            name={key} 
+                            id={key} 
+                            onChange={handleChange} 
+                            style={{
+                              width: "300px", 
+                              height: "30px", 
+                              borderRadius: "5px", 
+                              border: "none", 
+                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" 
+                            }} />)
                         : (
-                          <select id={key} onChange={handleChange} style={{width: "300px", height: "30px", borderRadius: "5px", border: "none", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }} >
+                          <select 
+                            id={key} 
+                            onChange={handleChange} 
+                            style={{
+                              width: "300px", 
+                              height: "30px", 
+                              borderRadius: "5px", 
+                              border: "none", 
+                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" 
+                            }} >
                             <option value="true">True</option>
                             <option value="false">False</option>
                           </select>
