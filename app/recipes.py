@@ -16,8 +16,6 @@ headers = {
 def main():
     print("hello world!")
 
-# Response from spoonacular - resource not found
-
 
 def search_recipes(params):
     print(params)
