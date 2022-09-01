@@ -4,187 +4,226 @@
     width: 100vw;
     display: flex;
     z-index: 999;
+
+    p, span {
+        color:rgb(123, 118, 118)
+    }
+
+    .rightPanel {
+        flex: 1;
+        height: 100%
+    }
+
+    .leftPanel {
+        flex: 1;
+        height: 100%;
+        position: relative;
+        background:rgb(227, 226, 226);
+        // background: linear-gradient(
+        //     0deg,
+        //     rgb(32, 33, 43) 20%,
+        //     rgb(32, 33, 43, 0.9) 50%,
+        //     rgb(32, 33, 43, 0.8) 80%,
+        //     rgb(32, 33, 43, 0.75) 90%,
+        //     rgb(32, 33, 43, 0.7) 100%
+        //   );
+        display: flex;
+        justify-content: center;
+        overflow-y: scroll;
+
+        .contentWrapper {
+            width: 75%;
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                height: 50vh;
+                width: 100%;
+                // position: relative
+            }
+            
+            .backArrow {
+                position: fixed;
+                height: 50px;
+                width: 50px;
+                top: 25px;
+                left: 25px;
+                cursor: pointer
+            }
+        
+            .title {
+                // position: absolute;
+                left: 15%;
+                top: 10%;
+                width: 600px;
+                text-align: left;
+                font-size: 4rem;
+                // font-style: italic;
+                color: black;
+                transition: 0.25s ease-in
+            }
+            
+            .header p {
+                // position: absolute;
+                padding-top: 25px;
+                width: 600px;
+                left: 15%;
+                top: 50%
+            }
+            
+            // .summaryContainer p {
+            //     text-align: center;
+            //     color: rgb(140, 133, 133)
+            // }
+    
+            .ingredientsOther {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                // position: relative;
+                left: 15%;
+                top: 50px
+            }
+            
+            .otherInfo {
+                // height: 100px;
+                // background: rgba(100, 100, 100, 0.5);
+                // display: flex;
+                // overflow-y: scroll
+                flex: 0.5
+            }
+    
+            .ingredients {
+                flex: 1;
+                display: flex; 
+                flex-direction: column;
+                align-items: flex-start;
+            }
+    
+            .ingredients h2 {
+                font-size: 1rem
+            }
+            
+            .infoTile {
+                display: flex;
+                flex-direction: column;
+                // justify-content: flex-start;
+                // align-items: center;
+            }
+            
+            .infoTile h2 {
+                font-size: 1rem;
+                // text-align: center
+            }
+            
+            .infoTile span {
+                // text-align: center;
+            }
+            
+            .steps {
+                display: flex;
+                flex-direction: column;
+                // padding: 50px;
+                width: 100%
+            }
+    
+            .steps h1 {
+                position: relative;
+                left: 0%
+            }
+            
+            .step p,
+            .step h1 {
+                color: black;
+            }
+            
+            .step h1 {
+                font-weight: bold;
+                font-size: 2rem;
+            }
+            
+            .ingredients {
+                display: flex;
+            }
+            
+            .imageContainer {
+                // border-radius: 5px;
+                overflow: hidden;
+                height: 50px;
+                position: relative;
+                margin: 5px
+            }
+            
+            .imageContainer img {
+                max-height: 100%;
+                border-radius: 5px
+            }
+            
+            .imageContainer span {
+                position: absolute;
+                opacity: 0;
+            }
+            
+            .ingredientsOverlay {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background: rgba(100, 100, 100, 0.5);
+                opacity: 0;
+                transition: 0.25s ease-in;
+                z-index: 999
+            }
+            
+            .imageContainer:hover .ingredientsOverlay {
+                opacity: 1
+            }
+            
+            .imageContainer:hover .ingredientName {
+                opacity: 1;
+            }
+            
+            .nutritionInformation {
+                display: flex;
+                flex-direction: column;
+                background: rgba(100, 100, 100, 0.5);
+                backdrop-filter: blur(12px);
+                // border-radius: 12px;
+                border: none;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                padding: 10px
+            }
+            
+            .headerPanel {
+                height: 40%;
+                display: flex;
+                justify-content: center;
+                align-items: center
+            }
+            
+            .headerPanel h1 {
+                font-size: 1rem
+            }
+            
+            .tileContainer {
+                height: 60%
+            }
+            
+            .nutrientTile {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+    }
 }
 
-.leftPanel {
-    flex: 1;
-    height: 100%;
-    position: relative;
-    background: linear-gradient(
-        0deg,
-        rgb(32, 33, 43) 20%,
-        rgb(32, 33, 43, 0.9) 50%,
-        rgb(32, 33, 43, 0.8) 80%,
-        rgb(32, 33, 43, 0.75) 90%,
-        rgb(32, 33, 43, 0.7) 100%
-      );
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll
-}
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    position: relative
-}
-
-.backArrow {
-    position: fixed;
-    height: 50px;
-    width: 50px;
-    top: 25px;
-    left: 25px;
-    cursor: pointer
-}
-
-.rightPanel {
-    flex: 1;
-    height: 100%
-}
-
-.title {
-    text-align: center;
-    font-size: 3.5rem;
-    font-style: italic;
-    color: white;
-}
-
-.summaryContainer {
-    padding: 20px;
-}
-
-.summaryContainer p {
-    text-align: center;
-    color: rgb(140, 133, 133)
-}
-
-.otherInfo {
-    height: 100px;
-    background: rgba(100, 100, 100, 0.5);
-    display: flex;
-    overflow-y: scroll
-}
-
-.infoTile {
-    margin-right: 15px;
-    margin-left: 15px;
-    max-height: 90%;
-    // border-left: 1px solid white;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.infoTile h2 {
-    font-size: 1rem;
-    text-align: center
-}
-
-.infoTile span {
-    text-align: center;
-}
-
-.steps {
-    display: flex;
-    flex-direction: column;
-    padding: 50px;  
-}
-
-.step p,
-.step h1 {
-    color: white;
-    font-size: 1.25rem
-}
-
-.step h1 {
-    font-weight: bold;
-    font-size: 2rem;
-}
-
-.ingredients {
-    display: flex;
-}
-
-.imageContainer {
-    // border-radius: 5px;
-    overflow: hidden;
-    height: 50px;
-    position: relative;
-    margin: 5px
-}
-
-.imageContainer img {
-    max-height: 100%;
-    border-radius: 5px
-}
-
-.imageContainer span {
-    position: absolute;
-    opacity: 0;
-}
-
-.ingredientsOverlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgba(100, 100, 100, 0.5);
-    opacity: 0;
-    transition: 0.25s ease-in;
-    z-index: 999
-}
-
-.imageContainer:hover .ingredientsOverlay {
-    opacity: 1
-}
-
-.imageContainer:hover .ingredientName {
-    opacity: 1;
-}
-
-.nutritionInformation {
-    display: flex;
-    flex-direction: column;
-    background: rgba(100, 100, 100, 0.5);
-    backdrop-filter: blur(12px);
-    // border-radius: 12px;
-    border: none;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px
-}
-
-.headerPanel {
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-.headerPanel h1 {
-    font-size: 1rem
-}
-
-// .nutritionInformation :nth-child(odd) {
-//     border-left: 1px solid white
-// }
-
-.tileContainer {
-    height: 60%
-}
-
-.nutrientTile {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 @media screen and (max-width: 980px) {
     .recipePage {

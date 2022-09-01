@@ -116,7 +116,7 @@ const Home: NextPage = () => {
     minZinc: '',
     maxZinc: '',
     offset: '',
-    number: '100',
+    number: '25',
     limitLicense: '',
     ranking: ''
 })
@@ -160,7 +160,6 @@ const Home: NextPage = () => {
     handleSearch()
   }, [])
 
-
   return (
     <>    
       <div>
@@ -183,15 +182,15 @@ const Home: NextPage = () => {
                         <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
                         {!formState[key].match(/(true|false)/g)
                         ? (<input 
-                            name={key} 
-                            id={key} 
-                            onChange={handleChange} 
+                            name={key}
+                            id={key}
+                            onChange={handleChange}
                             style={{
                               width: "300px", 
                               height: "30px", 
                               borderRadius: "5px", 
                               border: "none", 
-                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" 
+                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
                             }} />)
                         : (
                           <select 
@@ -216,7 +215,12 @@ const Home: NextPage = () => {
           <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
             <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
             <button className="search-btn" onClick={handleSearch}>Search</button>
-            <button className="advanced-search-btn" onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}>Advanced Search</button>
+            <button 
+              className="advanced-search-btn" 
+              onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}
+              >
+                Advanced Search
+              </button>
           </div>
           <div className="header-container">
             {/* <h1>Find your recipe!</h1> */}
@@ -270,7 +274,7 @@ const Home: NextPage = () => {
         #query {
           border: none;
           height: 100%;
-          border-radius: 12px 0 0 12px ;
+          border-radius: 5px 0 0 5px ;
           width: 70%;
           padding: 10px
         }
