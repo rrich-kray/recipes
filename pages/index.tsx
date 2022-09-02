@@ -170,7 +170,7 @@ const Home: NextPage = () => {
         </Head>
         <main>
           {activeRecipe.length !== 0 ? (
-          <RecipePage activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe} />
+            <RecipePage activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe} />
           ) : (
           <>
           <Nav />
