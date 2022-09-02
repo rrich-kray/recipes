@@ -6,7 +6,9 @@ const Nav: NextPage = () => {
         <>
             <div className="nav">
                 <div className="left-container"></div>
-                <div className="right-container"></div>
+                <div className="right-container">
+                    <button>Login</button>
+                </div>
             </div>
             <style jsx>{`
                 .nav {
@@ -25,6 +27,10 @@ const Nav: NextPage = () => {
 
                 .right-container {
                     height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
                 }
             `}</style>
         </>

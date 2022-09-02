@@ -174,55 +174,55 @@ const Home: NextPage = () => {
           ) : (
           <>
           <Nav />
-          <div className="advanced-search" style={{width: "100%", height: isComplexSearchVisible ? "100px" : "0px"}}>
-            {isComplexSearchVisible && (
-              <div className="complex-search" ref={complexSearch}>
-                {Object.keys(formState).map(key => (
-                    <div className="input-container" key={key} style={{margin: "10px"}}>
-                        <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
-                        {!formState[key].match(/(true|false)/g)
-                        ? (<input 
-                            name={key}
-                            id={key}
-                            onChange={handleChange}
-                            style={{
-                              width: "300px", 
-                              height: "30px", 
-                              borderRadius: "5px", 
-                              border: "none", 
-                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                            }} />)
-                        : (
-                          <select 
-                            id={key} 
-                            onChange={handleChange} 
-                            style={{
-                              width: "300px", 
-                              height: "30px", 
-                              borderRadius: "5px", 
-                              border: "none", 
-                              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" 
-                            }} >
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                          </select>
-                        )}
-                    </div>
-                ))}
-              </div>
-              )}
-          </div>
-          <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
-            <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
-            <button className="search-btn" onClick={handleSearch}>Search</button>
-            <button 
-              className="advanced-search-btn" 
-              onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}
-              >
-                Advanced Search
-              </button>
-          </div>
           <div className="header-container">
+            <div className="search-container" style={{top: isComplexSearchVisible ? "250px" : "100px"}}>
+              <input type="text" name="query" id="query" placeholder="Search..." onChange={handleChange} />
+              <button className="search-btn" onClick={handleSearch}>Search</button>
+              <button 
+                className="advanced-search-btn" 
+                onClick={() => setComplexSearchVisibility(isComplexSearchVisible => !isComplexSearchVisible)}
+                >
+                  Advanced Search
+                </button>
+            </div>
+            <div className="advanced-search" style={{width: "100%", height: isComplexSearchVisible ? "100px" : "0px"}}>
+              {isComplexSearchVisible && (
+                <div className="complex-search" ref={complexSearch}>
+                  {Object.keys(formState).map(key => (
+                      <div className="input-container" key={key} style={{margin: "10px"}}>
+                          <label htmlFor={key} style={{fontWeight: "bold", marginBottom: "10px"}}>{splitAndCapitalize(key)}</label>
+                          {!formState[key].match(/(true|false)/g)
+                          ? (<input 
+                              name={key}
+                              id={key}
+                              onChange={handleChange}
+                              style={{
+                                width: "300px", 
+                                height: "30px", 
+                                borderRadius: "5px", 
+                                border: "none", 
+                                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                              }} />)
+                          : (
+                            <select 
+                              id={key} 
+                              onChange={handleChange} 
+                              style={{
+                                width: "300px", 
+                                height: "30px", 
+                                borderRadius: "5px", 
+                                border: "none", 
+                                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                              }} >
+                              <option value="true">True</option>
+                              <option value="false">False</option>
+                            </select>
+                          )}
+                      </div>
+                  ))}
+                </div>
+                )}
+            </div>
             {/* <h1>Find your recipe!</h1> */}
           </div>
           {recipeData.results && (
@@ -257,24 +257,23 @@ const Home: NextPage = () => {
         }
 
         .search-container {
-          position: absolute;
+          // position: absolute;
           display: flex;
           width: 700px;
           height: 60px;
-          left: 0;
-          margin-left: auto;
-          right: 0;
-          margin-right: auto;
-          border-radius: 12px;
+          border-radius: 5px;
           border: none;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          margin-bottom: 20px;
+          // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           transition: 0.25s ease-in
         }
 
-        #query {
+        .search-container input {
+          outline: 1px solid black;
+          margin-right: 10px;
           border: none;
           height: 100%;
-          border-radius: 5px 0 0 5px ;
+          border-radius: 5px;
           width: 70%;
           padding: 10px
         }
@@ -286,16 +285,15 @@ const Home: NextPage = () => {
           background: white;
           cursor: pointer;
           font-weight: bold;
-          font-size: 1rem
-        }
-
-        .advanced-search-btn {
-          border-radius: 0 12px 12px 0;
+          font-size: 1rem;
+          margin-right: 10px;
+          border: 1px solid black;
+          border-radius: 5px
         }
 
         .header-container {
           width: 100%;
-          height: 250px;
+          height: calc(100vh - 90px);
           display: flex;
           flex-direction: column;
           justify-content: center;
