@@ -8,7 +8,7 @@ import requests
 url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
 api_key = os.getenv("RECIPE_API_KEY")
 headers = {
-    "X-RapidAPI-Key": '',
+    "X-RapidAPI-Key": 'b418581ce1msh2480d13b7072a51p149da9jsne92202f6ba0d',
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
 }
 
