@@ -1,4 +1,4 @@
-# Social Network
+# Recipes Search Engine
 
 This serves as the repository for the Recipes project.
 
