@@ -22,7 +22,7 @@ Recipes utilizes the Spoonacular Recipes API to allow users to search for recipe
 
 No installation required. Simply follow the link below to use the app.
 
-[link]
+https://recipes-client-69tei2z4x-rrich-kray.vercel.app/
 
 ## How it works
 
@@ -32,7 +32,7 @@ The AWS lambda function features a Python runtime environment, and all functiona
 
 ## Usage
 
-In its current form, users can search for recipes using a single keyword, or use additional search criteria by hitting the button labeled with "advanced search". The section below will then be populated with results. Clicking on a individual recipe will open a page containing addiitional information, including preparation steps.
+In its current form, users can search for recipes using a single keyword, or use additional search criteria by hitting the button labeled with "advanced search". The section below will then be populated with results. Clicking on a individual recipe will open a page containing additional information, including preparation steps.
 
 ## Utilizes
 
