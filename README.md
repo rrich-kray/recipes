@@ -39,7 +39,7 @@ In its current form, users can search for recipes using a single keyword, or use
 - Next.js
 - React.js
 - HTML
-- CSS
+- SCSS
 - JavaScript
 - Spoonacular Recipes API
 - Axios
